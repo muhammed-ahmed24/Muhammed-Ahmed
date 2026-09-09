@@ -1,0 +1,133 @@
+.education-section {
+  position: relative;
+}
+
+.education-content {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.education-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-normal), border-color var(--transition-normal);
+}
+
+.education-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-color);
+}
+
+.education-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: var(--accent-color);
+}
+
+.education-icon-wrapper svg {
+  width: 28px;
+  height: 28px;
+}
+
+.education-degree {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.education-institution,
+.education-faculty {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.education-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+.education-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-tertiary);
+}
+
+.education-status {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.education-year {
+  color: var(--accent-color);
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+
+.languages-container {
+  margin-top: 16px;
+}
+
+.languages-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.languages-grid {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.language-card {
+  background-color: var(--bg-tertiary);
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.language-name {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.language-level {
+  color: var(--accent-color);
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+}
+
+@media (max-width: 768px) {
+  .education-card {
+    padding: 24px;
+  }
+}
