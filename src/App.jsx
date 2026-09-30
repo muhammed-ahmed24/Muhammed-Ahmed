@@ -18,10 +18,10 @@ function App() {
       <main>
         <Hero />
         <About />
-        <Services />
-        <Projects />
         <Skills />
+        <Services />
         <Experience />
+        <Projects />
         <Education />
         <WhyMe />
         <Contact />

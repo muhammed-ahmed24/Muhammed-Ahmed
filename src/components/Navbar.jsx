@@ -23,19 +23,33 @@ const Navbar = () => {
       setIsScrolled(window.scrollY > 50);
 
       // Scroll spy for active link highlighting
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY + 150;
       
-      // Iterate backwards to find the deepest matching section
-      for (let i = navLinks.length - 1; i >= 0; i--) {
+      // Near bottom of page highlight last section
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50) {
+        setActiveSection(navLinks[navLinks.length - 1].id);
+        return;
+      }
+
+      let currentActive = navLinks[0].id;
+      let maxOffset = -1;
+
+      for (let i = 0; i < navLinks.length; i++) {
         const section = document.getElementById(navLinks[i].id);
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(navLinks[i].id);
-          break;
+        if (section) {
+          const sectionTop = section.offsetTop;
+          if (sectionTop <= scrollPosition && sectionTop > maxOffset) {
+            maxOffset = sectionTop;
+            currentActive = navLinks[i].id;
+          }
         }
       }
+
+      setActiveSection(currentActive);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -43,10 +57,15 @@ const Navbar = () => {
   
   const closeMenu = () => setIsMobileMenuOpen(false);
 
+  const handleNavClick = (id) => {
+    setActiveSection(id);
+    closeMenu();
+  };
+
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
-        <a href="#home" className="logo" onClick={closeMenu}>
+        <a href="#home" className="logo" onClick={() => handleNavClick('home')}>
           Muhammed<span className="accent-dot">.</span>
         </a>
 
@@ -57,7 +76,7 @@ const Navbar = () => {
                 <a
                   href={`#${link.id}`}
                   className={activeSection === link.id ? 'active' : ''}
-                  onClick={closeMenu}
+                  onClick={() => handleNavClick(link.id)}
                 >
                   {link.name}
                 </a>
